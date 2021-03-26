@@ -13,7 +13,11 @@ const NavDiv = styled.div`
   width: 100%;
   position: static;
   top: 0;
+  height: 50px;
   overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   background-color: darkgrey;
   ul {
     list-style-type: none;
