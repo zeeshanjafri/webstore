@@ -8,6 +8,8 @@ const ProductPage = styled.div`
   margin: 50px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  background-color: #403f4c;
 `;
 
 const ImgContainer = styled.div`
@@ -25,7 +27,7 @@ function productPage(props) {
         <img src={productImage} />
       </ImgContainer>
       <div id="product-info">
-        <h2>Product name - {props.name}</h2>
+        <h2>{props.name}</h2>
         <div>Price($) - {props.price} </div>
         <div>Specifications - {props.specification} </div>
         <button>Add to cart</button>

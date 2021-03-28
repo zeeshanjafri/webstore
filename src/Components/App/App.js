@@ -41,37 +41,52 @@ const CountrySelection = styled.div`
   color: black;
 `;
 
+const BackgroundColor = styled.div`
+  background-color: #403f4c;
+  color: white;
+  min-height: 40em;
+`;
+
+const Footer = styled.div``;
+
 function App() {
   return (
     <Router>
-      <NavDiv>
-        <ul>
-          <li>
-            <Link to="/landingpage">Home</Link>
-          </li>
-          <li>Country</li>
-          <li>
-            <Link to="/cart">Cart</Link>
-          </li>
-          <li>Sign in</li>
-          <li>
-            <Link to="/product">Product</Link>
-          </li>
-        </ul>
-      </NavDiv>
+      <BackgroundColor>
+        <NavDiv>
+          <ul>
+            <li>
+              <Link to="/landingpage">Home</Link>
+            </li>
+            <li>
+              <Link to="/product">Product</Link>
+            </li>
+            <li>
+              <Link to="/cart">Cart</Link>
+            </li>
+            <li>
+              <select name="Country">
+                <option value="Canada">Canada</option>
+                <option value="USA">USA</option>
+              </select>
+            </li>
+            <li>Sign in</li>
+          </ul>
+        </NavDiv>
 
-      {/* <Navbar /> */}
-      <Switch>
-        <Route path="/cart">
-          <Cart />
-        </Route>
-        <Route path="/product">
-          <Product />
-        </Route>
-        <Route path="/">
-          <LandingPage />
-        </Route>
-      </Switch>
+        {/* <Navbar /> */}
+        <Switch>
+          <Route path="/cart">
+            <Cart />
+          </Route>
+          <Route path="/product">
+            <Product name="Test name" price="5" specification="lorem ipsum" />
+          </Route>
+          <Route path="/">
+            <LandingPage />
+          </Route>
+        </Switch>
+      </BackgroundColor>
     </Router>
   );
 }
