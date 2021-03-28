@@ -7,7 +7,7 @@ import { Carousel } from "react-responsive-carousel";
 
 const Homescreen = styled.div`
   display: flex;
-  justify-content: center;
+  align-items: center;
   flex-direction: column;
   background-color: #403f4c;
 
@@ -17,11 +17,16 @@ const Homescreen = styled.div`
 `;
 
 const StyledCarousel = styled(Carousel)`
-  background: #fdfffc;
+  // background: #fdfffc;
+  justify-content: center;
 
   img {
-    max-height: 100px;
+    max-height: 200px;
     max-width: 400px;
+  }
+
+  ul thumbs animated {
+    display: none;
   }
 `;
 
@@ -68,29 +73,27 @@ function LandingPage() {
         emulateTouch="true"
         infiniteLoop="true"
         useKeyboardArrows="true"
-        showThumbs="false"
+        showThumbs={false}
         width="100%"
         centerMode="true"
       >
         <div>
           <img src={img1} />
-          <p>Legend 3</p>
+          <p>Legend 1</p>
         </div>
         <div>
           <img src={img1} />
-          <p>Legend 3</p>
         </div>
         <div>
           <img src={img1} />
-          <p>Legend 3</p>
         </div>
       </StyledCarousel>
       <FeaturedProducts>
         <StyledPaper>
           <h3>Product 1</h3>
-          <img src={img1} max-width="10em" max-height="10em" />
+          <img src={img1} max-width="10em" max-height="18em" />
           <button type="button">
-            <a href="/product">Click Me!</a>
+            <a href="/product">See More</a>
           </button>
         </StyledPaper>
 
@@ -98,7 +101,7 @@ function LandingPage() {
           <h3>Product 1</h3>
           <img src={img1} max-width="10em" max-height="10em" />
           <button type="button">
-            <a href="/product">Click Me!</a>
+            <a href="/product">See More</a>
           </button>
         </StyledPaper>
 
@@ -106,7 +109,7 @@ function LandingPage() {
           <h3>Product 1</h3>
           <img src={img1} max-width="10em" max-height="10em" />
           <button type="button">
-            <a href="/product">Click Me!</a>
+            <a href="/product">See More</a>
           </button>
         </StyledPaper>
       </FeaturedProducts>
