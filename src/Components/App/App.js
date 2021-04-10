@@ -3,6 +3,7 @@ import LandingPage from "../LandingPage/LandingPage";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
 import SignIn from "../SignIn/SignIn"
+import SignUp from "../SignUp/SignUp"
 import styled from "styled-components";
 import React from "react";
 import Button from "@material-ui/core/Button";
@@ -76,6 +77,11 @@ function App() {
             <Link to="/signin">Sign In</Link>
           </li>
 
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+
+
           </ul>
         </NavDiv>
 
@@ -90,6 +96,10 @@ function App() {
           
         <Route path = "/signIn"> 
           <SignIn />
+        </Route>
+        
+        <Route path = "/signup">
+          <SignUp />
         </Route>
 
           <Route path="/">
