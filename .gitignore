@@ -5,6 +5,11 @@
 /.pnp
 .pnp.js
 
+# dependencies
+/Client/node_modules
+/Client/.pnp
+/Client.pnp.js
+
 # testing
 /coverage
 
@@ -12,11 +17,11 @@
 /build
 
 # misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+./Client/DS_Store
+./Client/env.local
+./Client/env.development.local
+./Client/env.test.local
+./Client/env.production.local
 /package-lock.json
 
 npm-debug.log*

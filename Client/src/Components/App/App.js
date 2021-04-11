@@ -2,8 +2,8 @@ import Navbar from "../Navbar/Navbar";
 import LandingPage from "../LandingPage/LandingPage";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
-import SignIn from "../SignIn/SignIn"
-import SignUp from "../SignUp/SignUp"
+import SignIn from "../SignIn/SignIn";
+import SignUp from "../SignUp/SignUp";
 import styled from "styled-components";
 import React from "react";
 import Button from "@material-ui/core/Button";
@@ -72,16 +72,14 @@ function App() {
                 <option value="USA">USA</option>
               </select>
             </li>
-            
-          <li>
-            <Link to="/signin">Sign In</Link>
-          </li>
 
-          <li>
-            <Link to="/signup">Sign Up</Link>
-          </li>
+            <li>
+              <Link to="/signin">Sign In</Link>
+            </li>
 
-
+            <li>
+              <Link to="/signup">Sign Up</Link>
+            </li>
           </ul>
         </NavDiv>
 
@@ -93,14 +91,14 @@ function App() {
           <Route path="/product">
             <Product name="Test name" price="5" specification="lorem ipsum" />
           </Route>
-          
-        <Route path = "/signIn"> 
-          <SignIn />
-        </Route>
-        
-        <Route path = "/signup">
-          <SignUp />
-        </Route>
+
+          <Route path="/signIn">
+            <SignIn />
+          </Route>
+
+          <Route path="/signup">
+            <SignUp />
+          </Route>
 
           <Route path="/">
             <LandingPage />
