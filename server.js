@@ -1,14 +1,22 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const connection = require("./helpers/connection");
-const query = require("./helpers/query");
+
+var mysql = require("mysql2");
+// Connect to MySQL Database (already running)
+var connection = mysql.createPool({
+  host: "127.0.0.1",
+  user: "root",
+  password: "Sept82020!",
+  database: "ecommerce",
+  insecureAuth: true,
+});
 
 const app = express();
-const dbConfig = require("./App/df.config");
 
+// Avoid Cross Origin Request errors
 var corsOptions = {
-  origin: "http://localhost:8081",
+  origin: "http://localhost:3000",
 };
 
 app.use(cors(corsOptions));
@@ -19,26 +27,43 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// simple route
+// simple route to test connection
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to webstore application." });
 });
 
 app.get("/customers", async (req, res) => {
-  const conn = await connection(dbConfig).catch((e) => {});
-  const results = await query(conn, "SELECT * FROM customers").catch(
-    console.log
-  );
-  res.json({ results });
+  // Connecting to the database.
+  connection.getConnection(function (err, connection) {
+    // Executing the MySQL query (select all data from the 'customers' table).
+    connection.query(
+      "SELECT * FROM customers",
+      function (error, results, fields) {
+        // If some error occurs, we throw an error.
+        if (error) throw error;
+
+        // Getting the 'response' from the database and sending it to our route. This is were the data is.
+        res.send(results);
+      }
+    );
+  });
 });
 
 app.get("/user/:id", async (req, res) => {
   const { id } = req.params;
-  const conn = await connection(dbConfig).catch((e) => {});
-  const results = await query(conn, "SELECT * FROM customers WHERE id = ?", [
-    id,
-  ]);
-  res.send(tweet);
+  connection.getConnection(function (err, connection) {
+    connection.query(
+      "SELECT * FROM customers WHERE customerID = ?",
+      id,
+      function (error, results, fields) {
+        // If some error occurs, we throw an error.
+        if (error) throw error;
+
+        // Getting the 'response' from the database and sending it to our route. This is were the data is.
+        res.send(results);
+      }
+    );
+  });
 });
 
 // set port, listen for requests
