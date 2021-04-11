@@ -32,7 +32,7 @@ app.get("/customers", async (req, res) => {
   res.json({ results });
 });
 
-app.get("/:id", async (req, res) => {
+app.get("/user/:id", async (req, res) => {
   const { id } = req.params;
   const conn = await connection(dbConfig).catch((e) => {});
   const results = await query(conn, "SELECT * FROM customers WHERE id = ?", [
