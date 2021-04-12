@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -65,6 +66,22 @@ const StyledPaper = styled.div`
 `;
 
 function LandingPage() {
+  const [state, setState] = useState({});
+  const [loaded, markLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/products")
+      .then((res) => res.json())
+      .then((res) => setState(res))
+      .then(() => markLoaded(true))
+      .then(() => console.log(state));
+    // console.log(state);
+  }, [loaded]);
+
+  console.log(state[0]);
+
+  //TODO: Add image files locally
+
   return (
     <Homescreen>
       <h1>Welcome</h1>
@@ -79,7 +96,6 @@ function LandingPage() {
       >
         <div>
           <img src={img1} />
-          <p>Legend 1</p>
         </div>
         <div>
           <img src={img1} />
@@ -90,7 +106,7 @@ function LandingPage() {
       </StyledCarousel>
       <FeaturedProducts>
         <StyledPaper>
-          <h3>Product 1</h3>
+          <h3>{state[0]?.name}</h3>
           <img src={img1} max-width="10em" max-height="18em" />
           <button type="button">
             <a href="/product">See More</a>
@@ -98,7 +114,7 @@ function LandingPage() {
         </StyledPaper>
 
         <StyledPaper>
-          <h3>Product 1</h3>
+          <h3>{state[1]?.name}</h3>
           <img src={img1} max-width="10em" max-height="10em" />
           <button type="button">
             <a href="/product">See More</a>
@@ -106,7 +122,7 @@ function LandingPage() {
         </StyledPaper>
 
         <StyledPaper>
-          <h3>Product 1</h3>
+          <h3>{state[2]?.name}</h3>
           <img src={img1} max-width="10em" max-height="10em" />
           <button type="button">
             <a href="/product">See More</a>

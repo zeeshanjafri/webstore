@@ -21,14 +21,17 @@ const ImgContainer = styled.div`
 `;
 
 function ProductPage(props) {
-  const [state, setState] = useState([]);
+  const [state, setState] = useState({});
+  const [loaded, markLoaded] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:8080/products")
       .then((res) => res.json())
-      .then((res) => setState(res));
+      .then((res) => setState(res))
+      .then(() => markLoaded(true))
+      .then(() => console.log(state));
     console.log(state);
-  }, []);
+  }, [loaded]);
 
   return (
     <ProductPageStyle>

@@ -7,7 +7,7 @@
     "start": "node server.js",
     "start:dev": "nodemon server.js",
     "client": "cd Client && npm start",
-    "dev":"concurrently \"npm start\" \"npm run client\""
+    "dev": "concurrently \"npm start\" \"npm run client\""
   },
   "repository": {
     "type": "git",
