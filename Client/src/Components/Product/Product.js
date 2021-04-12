@@ -1,10 +1,10 @@
 // https://wireframe.cc/tpHbo3
+import React, { useState, useEffect } from "react";
 
-import React from "react";
 import styled from "styled-components";
 import productImage from "../../Images/watch_test.jpeg";
 
-const ProductPage = styled.div`
+const ProductPageStyle = styled.div`
   margin: 50px;
   display: flex;
   flex-direction: row;
@@ -20,9 +20,18 @@ const ImgContainer = styled.div`
   }
 `;
 
-function productPage(props) {
+function ProductPage(props) {
+  const [state, setState] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/products")
+      .then((res) => res.json())
+      .then((res) => setState(res));
+    console.log(state);
+  }, []);
+
   return (
-    <ProductPage>
+    <ProductPageStyle>
       <ImgContainer>
         <img src={productImage} />
       </ImgContainer>
@@ -33,8 +42,8 @@ function productPage(props) {
         <button>Add to cart</button>
       </div>
       <div id="related-products">{/* Implement carousel here */}</div>
-    </ProductPage>
+    </ProductPageStyle>
   );
 }
 
-export default productPage;
+export default ProductPage;
