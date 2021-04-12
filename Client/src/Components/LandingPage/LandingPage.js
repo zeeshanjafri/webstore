@@ -5,6 +5,7 @@ import { Button } from "@material-ui/core";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import img1 from "../../Images/watch_test.jpeg";
 import { Carousel } from "react-responsive-carousel";
+import { Link } from "react-router-dom";
 
 const Homescreen = styled.div`
   display: flex;
@@ -109,7 +110,7 @@ function LandingPage() {
           <h3>{state[0]?.name}</h3>
           <img src={img1} max-width="10em" max-height="18em" />
           <button type="button">
-            <a href="/product">See More</a>
+            <Link to="/product">See More</Link>
           </button>
         </StyledPaper>
 
@@ -117,7 +118,7 @@ function LandingPage() {
           <h3>{state[1]?.name}</h3>
           <img src={img1} max-width="10em" max-height="10em" />
           <button type="button">
-            <a href="/product">See More</a>
+            <Link to="/product/1">See More</Link>
           </button>
         </StyledPaper>
 

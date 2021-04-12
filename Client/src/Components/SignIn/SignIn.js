@@ -9,7 +9,7 @@ function SignIn() {
       .then((res) => res.json())
       .then((res) => setState(res));
     console.log(state);
-  }, []);
+  }, [state]);
 
   return (
     <div>

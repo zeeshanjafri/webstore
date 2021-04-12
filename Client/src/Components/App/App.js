@@ -88,6 +88,12 @@ function App() {
           <Route path="/cart">
             <Cart />
           </Route>
+          <Route
+            path="/product/:id"
+            children={
+              <Product name="Test name" price="5" specification="lorem ipsum" />
+            }
+          ></Route>
           <Route path="/product">
             <Product name="Test name" price="5" specification="lorem ipsum" />
           </Route>

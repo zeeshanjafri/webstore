@@ -8,5 +8,5 @@ module.exports = async (conn, q, params) =>
       }
       resolve(result);
     };
-    connection.query(q, params, handler);
+    conn.query(q, params, handler);
   });

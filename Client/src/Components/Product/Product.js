@@ -1,6 +1,6 @@
 // https://wireframe.cc/tpHbo3
 import React, { useState, useEffect } from "react";
-
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import productImage from "../../Images/watch_test.jpeg";
 
@@ -31,7 +31,10 @@ function ProductPage(props) {
       .then(() => markLoaded(true))
       .then(() => console.log(state));
     console.log(state);
-  }, [loaded]);
+  }, [loaded, state]);
+
+  let { id } = useParams();
+  console.log(id);
 
   return (
     <ProductPageStyle>
