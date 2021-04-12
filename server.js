@@ -7,7 +7,7 @@ var mysql = require("mysql2");
 var connection = mysql.createPool({
   host: "127.0.0.1",
   user: "root",
-  password: "Sept82020!",
+  password: "",
   database: "ecommerce",
   insecureAuth: true,
 });
