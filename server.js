@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 var mysql = require("mysql2");
-// Connect to MySQL Database (already running)
+// Connect to MySQL Database (already running) -> Use 'net start MySQL80' to start the server
 var connection = mysql.createPool({
   connectionLimit: 10,
   host: "127.0.0.1",
@@ -36,6 +36,11 @@ app.get("/", (req, res) => {
 app.get("/customers", async (req, res) => {
   // Connecting to the database.
   connection.getConnection(function (err, connection) {
+    // Release connection if there is an error
+    if (err) {
+      connection.release();
+      return res.send(400, "Couldn't get a connection");
+    }
     // Executing the MySQL query (select all data from the 'customers' table).
     connection.query(
       "SELECT * FROM customers",
@@ -54,9 +59,14 @@ app.get("/customers", async (req, res) => {
 app.get("/product/:id", async (req, res) => {
   const { id } = req.params;
   connection.getConnection(function (err, connection) {
+    // Release connection if there is an error
+    if (err) {
+      connection.release();
+      return res.send(400, "Couldn't get a connection");
+    }
+
     connection.query(
-      "SELECT * FROM customers WHERE productID = ?",
-      id,
+      `SELECT * FROM products WHERE productID = ${id}`,
       function (error, results, fields) {
         // If some error occurs, we throw an error.
         if (error) throw error;
@@ -72,6 +82,11 @@ app.get("/product/:id", async (req, res) => {
 app.get("/products", async (req, res) => {
   // Connecting to the database.
   connection.getConnection(function (err, connection) {
+    // Release connection if there is an error
+    if (err) {
+      connection.release();
+      return res.send(400, "Couldn't get a connection");
+    }
     // Executing the MySQL query (select all data from the 'customers' table).
     connection.query(
       "SELECT * FROM products",
@@ -90,6 +105,11 @@ app.get("/products", async (req, res) => {
 app.get("/user/:id", async (req, res) => {
   const { id } = req.params;
   connection.getConnection(function (err, connection) {
+    // Release connection if there is an error
+    if (err) {
+      connection.release();
+      return res.send(400, "Couldn't get a connection");
+    }
     connection.query(
       "SELECT * FROM customers WHERE customerID = ?",
       id,
