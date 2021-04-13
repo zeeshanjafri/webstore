@@ -24,8 +24,10 @@ function ProductPage(props) {
   const [state, setState] = useState({});
   const [loaded, markLoaded] = useState(false);
 
+  let { id } = useParams();
+
   useEffect(() => {
-    fetch("http://localhost:8080/products")
+    fetch(`http://localhost:8080/product/${id}`)
       .then((res) => res.json())
       .then((res) => setState(res))
       .then(() => markLoaded(true))
@@ -33,18 +35,23 @@ function ProductPage(props) {
     console.log(state);
   }, [loaded, state]);
 
-  let { id } = useParams();
+  let name = state[0]?.name || "name";
+  let price = state[0]?.price || "price";
+  let quantity = state[0]?.price || "quantity";
+  // let description = state[0].description;
+
   console.log(id);
 
   return (
     <ProductPageStyle>
       <ImgContainer>
-        <img src={productImage} />
+        <img src={require(`../../Images/${id}.jpg`).default} />
       </ImgContainer>
       <div id="product-info">
-        <h2>{props.name}</h2>
-        <div>Price($) - {props.price} </div>
-        <div>Specifications - {props.specification} </div>
+        <h2>{name}</h2>
+        <div>Price($): {price} </div>
+        <p>Quantity Left: {quantity}</p>
+        {/* <div>Description - {description} </div> */}
         <button>Add to cart</button>
       </div>
       <div id="related-products">{/* Implement carousel here */}</div>

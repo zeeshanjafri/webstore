@@ -108,25 +108,37 @@ function LandingPage() {
       <FeaturedProducts>
         <StyledPaper>
           <h3>{state[0]?.name}</h3>
-          <img src={img1} max-width="10em" max-height="18em" />
-          <button type="button">
-            <Link to="/product">See More</Link>
-          </button>
-        </StyledPaper>
-
-        <StyledPaper>
-          <h3>{state[1]?.name}</h3>
-          <img src={img1} max-width="10em" max-height="10em" />
+          <img
+            src={require(`../../Images/${state[0]?.productID}.jpg`).default}
+            max-width="10em"
+            max-height="10em"
+          />
           <button type="button">
             <Link to="/product/1">See More</Link>
           </button>
         </StyledPaper>
 
         <StyledPaper>
-          <h3>{state[2]?.name}</h3>
-          <img src={img1} max-width="10em" max-height="10em" />
+          <h3>{state[1]?.name}</h3>
+          <img
+            src={require(`../../Images/${state[1]?.productID}.jpg`).default}
+            max-width="10em"
+            max-height="10em"
+          />
           <button type="button">
-            <a href="/product">See More</a>
+            <Link to="/product/2">See More</Link>
+          </button>
+        </StyledPaper>
+
+        <StyledPaper>
+          <h3>{state[2]?.name}</h3>
+          <img
+            src={require(`../../Images/${state[2]?.productID}.jpg`).default}
+            max-width="10em"
+            max-height="10em"
+          />
+          <button type="button">
+            <a href="/product/3">See More</a>
           </button>
         </StyledPaper>
       </FeaturedProducts>
