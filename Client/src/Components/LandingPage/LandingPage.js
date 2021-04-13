@@ -70,6 +70,11 @@ function LandingPage() {
   const [state, setState] = useState({});
   const [loaded, markLoaded] = useState(false);
 
+  let storedUser = "";
+  if (localStorage.getItem("currentUser") !== null) {
+    storedUser = localStorage.getItem("currentUser");
+  }
+
   useEffect(() => {
     fetch("http://localhost:8080/products")
       .then((res) => res.json())
@@ -77,15 +82,14 @@ function LandingPage() {
       .then(() => markLoaded(true))
       .then(() => console.log(state));
     // console.log(state);
-  }, [loaded]);
+  }, [loaded, state]);
 
   console.log(state[0]);
-
-  //TODO: Add image files locally
 
   return (
     <Homescreen>
       <h1>Welcome</h1>
+      <span>{storedUser}</span>
       <StyledCarousel
         autoPlay="true"
         emulateTouch="true"
@@ -109,7 +113,8 @@ function LandingPage() {
         <StyledPaper>
           <h3>{state[0]?.name}</h3>
           <img
-            src={require(`../../Images/${state[0]?.productID}.jpg`).default}
+            // src={require(`../../Images/${state[0]?.productID}.jpg`).default}
+            src={require(`../../Images/1.jpg`).default}
             max-width="10em"
             max-height="10em"
           />
@@ -121,7 +126,8 @@ function LandingPage() {
         <StyledPaper>
           <h3>{state[1]?.name}</h3>
           <img
-            src={require(`../../Images/${state[1]?.productID}.jpg`).default}
+            // src={require(`../../Images/${state[1]?.productID}.jpg`).default}
+            src={require(`../../Images/1.jpg`).default}
             max-width="10em"
             max-height="10em"
           />
@@ -133,7 +139,8 @@ function LandingPage() {
         <StyledPaper>
           <h3>{state[2]?.name}</h3>
           <img
-            src={require(`../../Images/${state[2]?.productID}.jpg`).default}
+            // src={require(`../../Images/${state[2]?.productID}.jpg`).default}
+            src={require(`../../Images/1.jpg`).default}
             max-width="10em"
             max-height="10em"
           />

@@ -56,6 +56,22 @@ app.get("/customers", async (req, res) => {
   });
 });
 
+app.get("/customers/:username", async (req, res) => {
+  const { username } = req.params;
+  connection.getConnection(function (err, connection) {
+    connection.query(
+      "SELECT login, password FROM customers WHERE login = ?",
+      username,
+      function (error, results, fields) {
+        if (error) throw error;
+
+        res.send(results);
+      }
+    );
+    connection.release();
+  });
+});
+
 app.get("/product/:id", async (req, res) => {
   const { id } = req.params;
   connection.getConnection(function (err, connection) {

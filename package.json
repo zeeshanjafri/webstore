@@ -4,10 +4,10 @@
   "description": "### Project Description: Front-end for Database II Final Project",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "server": "node server.js",
     "start:dev": "nodemon server.js",
     "client": "cd Client && npm start",
-    "dev": "concurrently \"npm start\" \"npm run client\""
+    "start": "concurrently \"npm server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
