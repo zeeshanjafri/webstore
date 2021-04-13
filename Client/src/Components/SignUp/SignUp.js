@@ -4,18 +4,18 @@ import ReactDOM from "react-dom";
 import "./signup.css";
 
 function SignUp() {
-  const [details, setDetails] = useState({ name: "", password: "" });
+  const [details, setDetails] = useState({ name: "", password: "" , username: ""});
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     console.log(details.name, details.password);
-    if (details.name != null) {
+    if (details.username != "" && details.password != "" && details.name != "" ) {
       alert("USER CREATED");
       localStorage.setItem("currentUser", details.name);
       window.location = "/LandingPage";
     } else {
-      console.log("ELSE:: ", details.name);
+      alert("Please input required info: Name, Username, Password");
     }
   };
 
@@ -67,6 +67,8 @@ function SignUp() {
             class="lf--input"
             placeholder="Username"
             type="text"
+            onChange={(e) => setDetails({ ...details, username: e.target.value })}
+            value={details.username}
           ></input>
         </div>
 
@@ -83,6 +85,9 @@ function SignUp() {
             class="lf--input"
             placeholder="Password"
             type="password"
+            onChange={(e) => setDetails({ ...details, password: e.target.value })}
+            value={details.password}
+
           ></input>
         </div>
 
