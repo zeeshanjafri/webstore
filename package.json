@@ -1,41 +1,33 @@
 {
   "name": "webstore",
-  "version": "0.1.1",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.3",
-    "styled-components": "^5.2.1",
-    "web-vitals": "^1.0.1"
-  },
+  "version": "1.0.0",
+  "description": "### Project Description: Front-end for Database II Final Project",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "server": "node server.js",
+    "start:dev": "nodemon server.js",
+    "client": "cd Client && npm start",
+    "start": "concurrently \"npm server\" \"npm run client\""
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prometheus59/webstore.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "Ryan Karumanchery",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Prometheus59/webstore/issues"
+  },
+  "homepage": "https://github.com/Prometheus59/webstore#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.1"
   }
 }

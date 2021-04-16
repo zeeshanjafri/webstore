@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
+import { Link } from "react-router-dom";
 
 const StyledButton = styled(Button)`
   margin: 0 5px 0 0;
@@ -47,12 +48,14 @@ function Navbar() {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6">Webstore</Typography>
-        <SearchBar>
+        {/* <SearchBar>
           <SearchIcon />
           <StyledInputBase placeholder="Search..." />
-        </SearchBar>
+        </SearchBar> */}
         <CountrySelection>Ca</CountrySelection>
-        <StyledButton>Cart</StyledButton>
+        <StyledButton>
+          <Link to="/cart">Cart</Link>
+        </StyledButton>
         <StyledButton>Login</StyledButton>
       </StyledToolbar>
     </AppBar>
